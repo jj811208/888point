@@ -9,9 +9,6 @@
 		<link rel="stylesheet" href="lib/css/zenburn.css">
 		<script src="lib/js/head.min.js"></script>
 		<script src="js/reveal.js"></script>
-		
-<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css" rel="stylesheet" />
-<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
 		<style>
 			*:not(pre)
 			{
@@ -41,7 +38,7 @@
 				</section>
 
 				<section>
-					<h3 class="fragment fade-out" data-fragment-index="0">為什麼需要<span style='color:#992222'>Gulp.js?</span></h3>
+					<h3 class="fragment fade-out" data-fragment-index="0">為什麼需要<span style='color:#992222'>Gulp.js</span>?</h3>
 					<h3 class="fragment fade-up" style='position: absolute;	top: 14%; left:calc(50% - 40%); width: 80%;' data-fragment-index="0"><s style='color:#888; font-size:1.2rem'>懶</s>為了工作流的最佳化!!</h3>
 				</section>
 
@@ -61,7 +58,7 @@
 						</ol>
 					</section>
 					<section>
-						<h3>使用gulp.js後的工作流程</h3>
+						<h3>使用<span style='color:#992222'>Gulp.js</span>後的工作流程</h3>
 						<ol style='font-size:2rem'>
 							<li class="fragment fade-up" data-fragment-index="0" style='padding:3px;'>確認需求</li>
 							<li class="fragment fade-up" data-fragment-index="1" style='padding:3px;'>寫程式(html,css,js)</li> 
@@ -95,8 +92,10 @@ npm i gulp
 					<section>
 						<H3>如何使用-指令篇</H3>
 						<pre style='background:#000 ; color:#ddd'>
+//cmd
 gulp 'taskname' //執行任務
 
+//gulpfile.js
 task('xxx',function) //定義一個任務
 
 src() //來源檔案
@@ -130,7 +129,7 @@ gulp minify
 						</pre>
 					</section>
 					<section>
-						<H3>如何使用-情境篇_串起你的工作流</H3>
+						<H3>如何使用-情境篇_串起工作流</H3>
 						打開gulpfile.js
 						<pre style='background:#000 ; color:#ddd; font-size: 1rem'>
 gulp.task('abc', function() {
@@ -152,7 +151,7 @@ gulp gogogo
 					</section>
 					<section>
 						<H3>附錄</H3>
-						所有能用的plugin(3582):https://gulpjs.com/plugins/
+						gulp plugin(3582) : https://gulpjs.com/plugins/
 					</section>
 				</section>
 				
