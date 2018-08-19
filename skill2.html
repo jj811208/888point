@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang=lang="zh-TW">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width">
+		<title>888's Point</title>
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/moon.css" id="theme">  
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+		<style>
+			*:not(pre)
+			{
+				font-family: "League Gothic", Microsoft JhengHei !important;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section>
+					<h2> <span style='color:#992222'>Gulp.js</span> 簡易入門</h2>
+					<h4 style='font-size:2rem'>前端自動化工具</h4>
+					<h7 style='font-size:1.6rem; font-weight:600;'>講者: 初振言</h7>
+				</section>
+				
+				<section>
+					<H3>前端工程過去所遇到的問題</H3>
+					<ol style='font-size:2rem; width: 70%;'>
+						<li class="fragment fade-up" data-fragment-index="0" style='padding:3px;'>瀏覽器百家爭鳴<span class="fragment fade-up" data-fragment-index="1"> -> postCSS</span></li> <!---->
+						<li class="fragment fade-up" data-fragment-index="2" style='padding:3px;'>JS新標準的兼容性差<span class="fragment fade-up" data-fragment-index="3"> -> babel</span></span></li> <!---->
+						<li class="fragment fade-up" data-fragment-index="4" style='padding:3px;'>CSS樣式重覆與難以維護<span class="fragment fade-up" data-fragment-index="5"> -> SASS , CSS-Module</span></span></li> <!---->
+						<li class="fragment fade-up" data-fragment-index="6" style='padding:3px;'>網站超肥 套件多<span class="fragment fade-up" data-fragment-index="7"> -> minifyCSS , uglify , imagemin</li> <!-- -->
+						<div class="fragment fade-up" data-fragment-index="8" style='padding:3px;'>......</div> <!-- -->
+					</ol>
+				</section>
+
+				<section>
+					<h3 class="fragment fade-out" data-fragment-index="0">為什麼需要<span style='color:#992222'>Gulp.js</span>?</h3>
+					<h3 class="fragment fade-up" style='position: absolute;	top: 14%; left:calc(50% - 40%); width: 80%;' data-fragment-index="0"><s style='color:#888; font-size:1.2rem'>懶</s>為了工作流的最佳化!!</h3>
+				</section>
+
+				<section>
+					<section><!-- data-background="#dddddd" -->
+						<h3>原本前端工程師的工作流程</h3>
+						<ol style='font-size:2rem'>
+							<li class="fragment fade-up" data-fragment-index="0" style='padding:3px;'>確認需求</li>
+							<li class="fragment fade-up" data-fragment-index="1" style='padding:3px;'>寫程式(html,css,js)</li> 
+							<li class="fragment fade-up" data-fragment-index="2" style='padding:3px;'>使用pug編譯html</li> 
+							<li class="fragment fade-up" data-fragment-index="3" style='padding:3px;'>使用sass編譯css</li> 
+							<li class="fragment fade-up" data-fragment-index="4" style='padding:3px;'>使用postcss再編譯一次css</li> 
+							<li class="fragment fade-up" data-fragment-index="5" style='padding:3px;'>使用babel編譯js</li> 
+							<li class="fragment fade-up" data-fragment-index="6" style='padding:3px;'>使用minifyCSS壓縮css</li> 
+							<li class="fragment fade-up" data-fragment-index="7" style='padding:3px;'>......</li> 
+							<li class="fragment fade-up" data-fragment-index="8" style='padding:3px;'>debug</li>
+						</ol>
+					</section>
+					<section>
+						<h3>使用<span style='color:#992222'>Gulp.js</span>後的工作流程</h3>
+						<ol style='font-size:2rem'>
+							<li class="fragment fade-up" data-fragment-index="0" style='padding:3px;'>確認需求</li>
+							<li class="fragment fade-up" data-fragment-index="1" style='padding:3px;'>寫程式(html,css,js)</li> 
+							<li class="fragment fade-up" data-fragment-index="2" style='padding:3px;'>編寫gulpfile.js</li> 
+							<li class="fragment fade-up" data-fragment-index="7" style='padding:3px;'>執行task</li> 
+							<li class="fragment fade-up" data-fragment-index="8" style='padding:3px;'>debug</li>
+						</ol>
+					</section>
+				</section>
+				
+				<section>
+					<h1>how to use?</h1>
+				</section>
+				
+				<section>
+					<section>
+						<H3>安裝篇</H3>
+						打開cmd
+						<pre style='background:#000 ; color:#ddd'>
+//確認是否有安裝npm
+npm -v
+
+//第一次安裝
+npm i -g gulp
+
+//確認是否安裝成功
+gulp -v
+
+//將gulp安裝在你的專案
+cd /path/to/yourproject/
+npm i gulp
+						</pre>
+						然後在這目錄中新建一個gulpfile.js
+					</section>
+					<section>
+						<H3>指令篇</H3>
+						<pre style='background:#000 ; color:#ddd'>
+//cmd
+gulp 'taskname' //執行任務
+
+//gulpfile.js
+task('xxx',function) //定義一個任務
+
+src() //來源檔案
+
+pipe() //流程
+
+dest() //輸出檔案的位置
+						</pre>
+					</section>
+					<section>
+						<H3>情境篇_壓縮html</H3>
+						先移動到專案資料夾 安裝相關套件
+						<pre style='background:#000 ; color:#ddd; font-size: 1rem'>
+npm install --save-dev gulp-htmlmin 
+						</pre>
+						打開gulpfile.js
+						<pre style='background:#000 ; color:#ddd; font-size: 1rem'>
+//gulpfile.js
+var gulp = require('gulp');
+var htmlmin = require('gulp-htmlmin');
+
+gulp.task('minify', function() {
+  return gulp.src('html/*.html')
+    .pipe(htmlmin({collapseWhitespace: true}))
+    .pipe(gulp.dest('dist/html'));
+});
+						</pre>
+						回到cmd
+						<pre style='background:#000 ; color:#ddd; font-size: 1rem'>
+gulp minify
+						</pre>
+					</section>
+					<section>
+						<H3>情境篇_串起工作流</H3>
+						打開gulpfile.js
+						<pre style='background:#000 ; color:#ddd; font-size: 1rem'>
+gulp.task('abc', function() {
+	--some code--
+});
+gulp.task('hello', function() {
+	--some code--
+});
+gulp.task('Money', function() {
+	--some code--
+});
+
+gulp.task('gogogo'',["abc","hello","Money"]);
+						</pre>
+						回到cmd
+						<pre style='background:#000 ; color:#ddd; font-size: 1rem'>
+gulp gogogo
+						</pre>
+					</section>
+					<section>
+						<H3>附錄</H3>
+						gulp plugin(3582) : https://gulpjs.com/plugins/
+					</section>
+				</section>
+				
+			</div>
+		</div>
+		<script type="text/javascript">
+		Reveal.initialize({
+			controls: true, // 顯示控制按鈕
+			controlsTutorial: true, // 透過學習功能讓使用者知道怎麼操作
+			controlsLayout: 'edge', // 控制按鈕位置(選項: edge/bootom-right)
+			controlsBackArrows: 'faded', // 返回箭頭顯示方式(選項: faded/hidden/visible)
+			progress: true, // 顯示簡報進度條
+			slideNumber: true, // 顯示目前簡報頁碼
+			history: false, // 將每張簡報存在瀏覽器紀錄
+			keyboard: true, // 啟用鍵盤快捷鍵
+			overview: true, // 啟用簡報全部導覽模式
+			center: true, // 簡報垂直置中
+			touch: true, // 啟用觸碰模式
+			loop: false, // 啟用循環模式
+			rtl: false, // 啟用簡報方向為RTL模式
+			shuffle: false, // 簡報順序隨機
+			autoPlayMedia: null, // 是否自動播放簡報內影音媒體(選項: null:設有data-autoplay屬性的才會自動撥放/true/false)
+			autoSlide: 0, // 自動進行的秒數，0秒代表不自動(單位: 毫秒)
+			autoSlideStoppable: true, // 用戶在操作的時停止自動切換
+			autoSlideMethod: Reveal.navigateNext, // 透過此方式來自動導行
+			mouseWheel: false, // 啟用滑鼠滾輪來切換簡報
+			transition: 'slide', // 轉場動畫(選項: none/fade/slide/convex/concave/zoom)
+			transitionSpeed: 'default', // 轉場速度(選項: default/fast/slow)
+			backgroundTransition: 'fade', // 簡報背景的轉場動畫(選項: none/fade/slide/convex/concave/zoom)
+			parallaxBackgroundImage: '', //背景視差圖片
+			parallaxBackgroundSize: '', // 背景視差圖片尺寸(單位: 像素)
+			parallaxBackgroundHorizontal: null, // 水平背景視差，設0停止視差，null為自動計算(單位: 像素)
+			parallaxBackgroundVertical: null, // 垂直背景視差，設0停止視差，null為自動計算(單位: 像素)
+			dependencies: [
+		// Zoom in and out with Alt+click
+		{ src: 'plugin/zoom-js/zoom.js', async: true },
+	]
+		});
+		</script>
+	</body>
+</html>
