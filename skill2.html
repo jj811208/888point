@@ -21,144 +21,37 @@
 		<div class="reveal">
 			<div class="slides">
 				<section>
-					<h2> <span style='color:#992222'>Gulp.js</span> 簡易入門</h2>
-					<h4 style='font-size:2rem'>前端自動化工具</h4>
+					<h2> <span style='color:#115599'>MPA</span> vs <span style='color:#992222'>SPA</span></h2>
 					<h7 style='font-size:1.6rem; font-weight:600;'>講者: 初振言</h7>
 				</section>
 				
 				<section>
-					<H3>前端工程過去所遇到的問題</H3>
-					<ol style='font-size:2rem; width: 70%;'>
-						<li class="fragment fade-up" data-fragment-index="0" style='padding:3px;'>瀏覽器百家爭鳴<span class="fragment fade-up" data-fragment-index="1"> -> postCSS</span></li> <!---->
-						<li class="fragment fade-up" data-fragment-index="2" style='padding:3px;'>JS新標準的兼容性差<span class="fragment fade-up" data-fragment-index="3"> -> babel</span></span></li> <!---->
-						<li class="fragment fade-up" data-fragment-index="4" style='padding:3px;'>CSS樣式重覆與難以維護<span class="fragment fade-up" data-fragment-index="5"> -> SASS , CSS-Module</span></span></li> <!---->
-						<li class="fragment fade-up" data-fragment-index="6" style='padding:3px;'>網站超肥 套件多<span class="fragment fade-up" data-fragment-index="7"> -> minifyCSS , uglify , imagemin</li> <!-- -->
-						<div class="fragment fade-up" data-fragment-index="8" style='padding:3px;'>......</div> <!-- -->
-					</ol>
-				</section>
-
-				<section>
-					<h3 class="fragment fade-out" data-fragment-index="0">為什麼需要<span style='color:#992222'>Gulp.js</span>?</h3>
-					<h3 class="fragment fade-up" style='position: absolute;	top: 14%; left:calc(50% - 40%); width: 80%;' data-fragment-index="0"><s style='color:#888; font-size:1.2rem'>懶</s>為了工作流的最佳化!!</h3>
-				</section>
-
-				<section>
-					<section><!-- data-background="#dddddd" -->
-						<h3>原本前端工程師的工作流程</h3>
-						<ol style='font-size:2rem'>
-							<li class="fragment fade-up" data-fragment-index="0" style='padding:3px;'>確認需求</li>
-							<li class="fragment fade-up" data-fragment-index="1" style='padding:3px;'>寫程式(html,css,js)</li> 
-							<li class="fragment fade-up" data-fragment-index="2" style='padding:3px;'>使用pug編譯html</li> 
-							<li class="fragment fade-up" data-fragment-index="3" style='padding:3px;'>使用sass編譯css</li> 
-							<li class="fragment fade-up" data-fragment-index="4" style='padding:3px;'>使用postcss再編譯一次css</li> 
-							<li class="fragment fade-up" data-fragment-index="5" style='padding:3px;'>使用babel編譯js</li> 
-							<li class="fragment fade-up" data-fragment-index="6" style='padding:3px;'>使用minifyCSS壓縮css</li> 
-							<li class="fragment fade-up" data-fragment-index="7" style='padding:3px;'>......</li> 
-							<li class="fragment fade-up" data-fragment-index="8" style='padding:3px;'>debug</li>
-						</ol>
-					</section>
-					<section>
-						<h3>使用<span style='color:#992222'>Gulp.js</span>後的工作流程</h3>
-						<ol style='font-size:2rem'>
-							<li class="fragment fade-up" data-fragment-index="0" style='padding:3px;'>確認需求</li>
-							<li class="fragment fade-up" data-fragment-index="1" style='padding:3px;'>寫程式(html,css,js)</li> 
-							<li class="fragment fade-up" data-fragment-index="2" style='padding:3px;'>編寫gulpfile.js</li> 
-							<li class="fragment fade-up" data-fragment-index="7" style='padding:3px;'>執行task</li> 
-							<li class="fragment fade-up" data-fragment-index="8" style='padding:3px;'>debug</li>
-						</ol>
-					</section>
+					<H3>MPA的優缺點</H3>
+					<ul style='font-size:2rem; width: 70%;'>
+						<span style='color:#4488CC'><li class="fragment fade-up" data-fragment-index="1" style='padding:3px;'>對搜尋引擎非常友善</li></span>
+						<span style='color:#4488CC'><li class="fragment fade-up" data-fragment-index="2" style='padding:3px;'>對客戶端的要求較低</li></span>
+						<span style='color:#4488CC'><li class="fragment fade-up" data-fragment-index="3" style='padding:3px;'>技術門檻低</li></span>
+						<span style='color:#CC5555'><li class="fragment fade-up" data-fragment-index="4" style='padding:3px;'>網路頻寬耗用較大，對伺服器的負擔較高</li></span> 
+						<span style='color:#CC5555'><li class="fragment fade-up" data-fragment-index="5" style='padding:3px;'>頁面與頁面之前皆須等待伺服器回傳資料並且需要重新加載</li></span> 
+						<span style='color:#CC5555'><li class="fragment fade-up" data-fragment-index="6" style='padding:3px;'>前端與後端無法切割</li></span>
+					</ul>
 				</section>
 				
 				<section>
-					<h1>how to use?</h1>
+					<H3>SPA的優缺點</H3>
+					<ul style='font-size:2rem; width: 70%;'>
+						<span style='color:#4488CC'><li class="fragment fade-up" data-fragment-index="1" style='padding:3px;'>換頁載入速度飛快，使用者體驗較佳</li></span>
+						<span style='color:#4488CC'><li class="fragment fade-up" data-fragment-index="2" style='padding:3px;'>對伺服器的負擔較低</li></span>
+						<span style='color:#4488CC'><li class="fragment fade-up" data-fragment-index="3" style='padding:3px;'>可維護性佳</li></span>
+						<span style='color:#CC5555'><li class="fragment fade-up" data-fragment-index="4" style='padding:3px;'>第一頁的載入時間較高</li></span> 
+						<span style='color:#CC5555'><li class="fragment fade-up" data-fragment-index="5" style='padding:3px;'>對搜尋引擎不友善</li></span> 
+						<span style='color:#CC5555'><li class="fragment fade-up" data-fragment-index="6" style='padding:3px;'>技術門檻高</li></span>
+					</ul>
 				</section>
-				
+
 				<section>
-					<section>
-						<H3>安裝篇</H3>
-						打開cmd
-						<pre style='background:#000 ; color:#ddd'>
-//確認是否有安裝npm
-npm -v
-
-//第一次安裝
-npm i -g gulp
-
-//確認是否安裝成功
-gulp -v
-
-//將gulp安裝在你的專案
-cd /path/to/yourproject/
-npm i gulp
-						</pre>
-						然後在這目錄中新建一個gulpfile.js
-					</section>
-					<section>
-						<H3>指令篇</H3>
-						<pre style='background:#000 ; color:#ddd'>
-//cmd
-gulp 'taskname' //執行任務
-
-//gulpfile.js
-task('xxx',function) //定義一個任務
-
-src() //來源檔案
-
-pipe() //流程
-
-dest() //輸出檔案的位置
-						</pre>
-					</section>
-					<section>
-						<H3>情境篇_壓縮html</H3>
-						先移動到專案資料夾 安裝相關套件
-						<pre style='background:#000 ; color:#ddd; font-size: 1rem'>
-npm install --save-dev gulp-htmlmin 
-						</pre>
-						打開gulpfile.js
-						<pre style='background:#000 ; color:#ddd; font-size: 1rem'>
-//gulpfile.js
-var gulp = require('gulp');
-var htmlmin = require('gulp-htmlmin');
-
-gulp.task('minify', function() {
-  return gulp.src('html/*.html')
-    .pipe(htmlmin({collapseWhitespace: true}))
-    .pipe(gulp.dest('dist/html'));
-});
-						</pre>
-						回到cmd
-						<pre style='background:#000 ; color:#ddd; font-size: 1rem'>
-gulp minify
-						</pre>
-					</section>
-					<section>
-						<H3>情境篇_串起工作流</H3>
-						打開gulpfile.js
-						<pre style='background:#000 ; color:#ddd; font-size: 1rem'>
-gulp.task('abc', function() {
-	--some code--
-});
-gulp.task('hello', function() {
-	--some code--
-});
-gulp.task('Money', function() {
-	--some code--
-});
-
-gulp.task('gogogo'',["abc","hello","Money"]);
-						</pre>
-						回到cmd
-						<pre style='background:#000 ; color:#ddd; font-size: 1rem'>
-gulp gogogo
-						</pre>
-					</section>
-					<section>
-						<H3>附錄</H3>
-						gulp plugin(3582) : https://gulpjs.com/plugins/
-					</section>
+					<h2>總結</h2>
 				</section>
-				
 			</div>
 		</div>
 		<script type="text/javascript">
